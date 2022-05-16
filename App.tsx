@@ -1,20 +1,34 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import {
+  Text,
+  TextInput,
+  View,
+  TouchableWithoutFeedback,
+  Keyboard,
+  KeyboardAvoidingView,
+  Button,
+} from 'react-native';
+
+import Form from './src/Components/Form';
+
+import { style } from './src/Style/App.style';
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
+    <View style={style.container}>
+      <StatusBar style='light' backgroundColor='transparent' translucent />
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss} style={{ flex: 1 }}>
+        <KeyboardAvoidingView
+          behavior='position'
+          enabled
+          style={{ width: '100%' }}
+        >
+          <>
+            <Text style={style.title}> Faça seu login </Text>
+            <Form />
+          </>
+        </KeyboardAvoidingView>
+      </TouchableWithoutFeedback>
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
